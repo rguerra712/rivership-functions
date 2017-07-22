@@ -5,22 +5,23 @@
 
     exports.getPersonLocation = (name, onSuccess) => {
         return new Promise((resolve, reject) => {
+            let tableId = process.env.AIRTABLE_PEOPLE_ID;
             let getPersonName = airtableHelper.getFirstValueWhere(
-                process.env.AIRTABLE_PEOPLE_ID,
+                tableId,
                 'People',
                 'name',
                 name,
                 'Name'
             );
             let getPersonTeam = airtableHelper.getFirstValueWhere(
-                process.env.AIRTABLE_PEOPLE_ID,
+                tableId,
                 'People',
                 'name',
                 name,
                 'Team'
             );
             let getTeam = teamId => airtableHelper.getById(
-                process.env.AIRTABLE_TEAM_ID,
+                tableId,
                 'Teams',
                 teamId,
                 'Location'

@@ -3,11 +3,11 @@
 
     const airtableHelper = require('./airtableHelper');
 
-    exports.getTeamLocation = (name, onSuccess) => {
+    exports.getRoomByName = (name) => {
         return airtableHelper.getFirstValueWhere(
-            process.env.AIRTABLE_PEOPLE_ID,
-            'Teams',
-            'name',
+            process.env.AIRTABLE_CONFERENCEROOMS_ID,
+            'ConferenceRooms',
+            'Name',
             name,
             'Location'
         );

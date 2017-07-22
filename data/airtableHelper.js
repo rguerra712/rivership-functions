@@ -6,10 +6,10 @@
      * Gets the first value that matches a criteria for a table with ID and name
      */
     exports.getFirstValueWhere = (tableId, tableName, whereField, whereLike, columnSought) => {
-
         let query = `filterByFormula=Find(Lower("${whereLike}"), Lower({${whereField}}))`;
+        let url = `https://api.airtable.com/v0/${tableId}/${tableName}?${query}`;
         let options = {
-            url: `https://api.airtable.com/v0/${tableId}/${tableName}?${query}`,
+            url: url,
             headers: {
                 'Authorization': `Bearer ${process.env.AIRTABLE_KEY}`
             }
@@ -40,9 +40,9 @@
     };
 
     exports.getById = (tableId, tableName, id, columnSought) => {
-
+        let url = `https://api.airtable.com/v0/${tableId}/${tableName}/${id}`;
         let options = {
-            url: `https://api.airtable.com/v0/${tableId}/${tableName}/${id}`,
+            url: url,
             headers: {
                 'Authorization': `Bearer ${process.env.AIRTABLE_KEY}`
             }

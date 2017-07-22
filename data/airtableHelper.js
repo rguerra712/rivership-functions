@@ -26,11 +26,11 @@
                         return;
                     }
                     if (response.error) {
-                        reject(`Error response: ${response.error}`);
+                        reject(`Error response: ${body}`);
                         return;
                     }
                     if (!response.records || !response.records[0] || !response.records[0].fields) {
-                        reject(`No response, instead found: ${response}`);
+                        reject(`No response, instead found: ${body}`);
                         return;
                     }
                     resolve(response.records[0].fields[columnSought]);
@@ -59,11 +59,11 @@
                         return;
                     }
                     if (response.error) {
-                        reject(`Error response: ${response.error}`);
+                        reject(`Error response: ${body}`);
                         return;
                     }
                     if (!response.fields) {
-                        reject(`No response fields, instead found: ${response}`);
+                        reject(`No response fields, instead found: ${body}`);
                         return;
                     }
                     resolve(response.fields[columnSought]);

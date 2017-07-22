@@ -3,7 +3,7 @@
 
     const airtableHelper = require('./airtableHelper');
 
-    exports.getPersonLocation = (name, onSuccess) => {
+    exports.getPersonLocation = (name) => {
         return new Promise((resolve, reject) => {
             let tableId = process.env.AIRTABLE_PEOPLE_ID;
             let getPersonName = airtableHelper.getFirstValueWhere(

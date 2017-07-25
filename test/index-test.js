@@ -33,7 +33,7 @@ const expect = chai.expect;
 
     describe('lunch today?', () => {
         it('should have something for lunch', () => {
-            return index.whatIsLunch()
+            return index.whatIsLunch('tomorrow')
                 .then(result => {
                     expect(result).to.not.equal(undefined);
                 })

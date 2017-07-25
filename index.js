@@ -30,13 +30,24 @@
 
     exports.whatIsLunch = (day) => {
         if (!day) {
-            let today = new Date();
-            day = getDayOfWeek(today);
+            day = getDayOfWeekForToday();
+        } else if (day.toString().toLowerCase().indexOf('tomorrow') >= 0) {
+            day = getDayOfWeekForTomorrow();
         }
         return lunch.getLunch(day);
     };
 
-    let getDayOfWeek = date => {
+    let getDayOfWeekForToday = () => {
+        return getDayOfWeek(new Date().getDay());
+    }
+
+    let getDayOfWeekForTomorrow = () => {
+        let day = new Date().getDay() + 1;
+        day = day % 7; // in case of Saturday
+        return getDayOfWeek(day);
+    }
+
+    let getDayOfWeek = day => {
         let weekday = new Array(7);
         weekday[0] = "Sunday";
         weekday[1] = "Monday";
@@ -46,6 +57,6 @@
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-        return weekday[date.getDay()];
+        return weekday[day];
     }
 })();

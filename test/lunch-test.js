@@ -6,10 +6,10 @@ const expect = chai.expect;
     'use strict';
 
     describe('lunch per day', () => {
-        it('should have lunch for Monday', () => {
-            return lunch.getLunch('Monday')
+        it('should have lunch for Sunday', () => {
+            return lunch.getLunch('Sunday')
                 .then(result => {
-                    expect(result).to.contain('down');
+                    expect(result.toLowerCase()).to.contain('no lunch');
                 })
                 .catch(error => { throw Error(error); });
         })

@@ -23,27 +23,27 @@ You will need to set the following environment variables to use this library:
 To use the library, you can
 ### Ask where a conference room resides
 ```
-const rivership = request('rivership-functions');
+const rivership = require('rivership-functions');
 rivership.whereIs('Lone Star'); // Returns a promise with the location of 'Lone Star' if it exists
 ```
 ### Ask where a team resides
 ```
-const rivership = request('rivership-functions');
+const rivership = require('rivership-functions');
 rivership.whereIs('Starship'); // Returns a promise with the location of 'Starship' if the team exists
 ```
 ### Ask where an individual room resides
 ```
-const rivership = request('rivership-functions');
+const rivership = require('rivership-functions');
 rivership.whereIs('Stephen Guerra'); // Returns a promise with the location of Stephen (he should exist)
 ```
 ### Ask what is for lunch today
 ```
-const rivership = request('rivership-functions');
+const rivership = require('rivership-functions');
 rivership.whatIsLunch(); // Returns a promise with today's lunch menu
 ```
 ### Ask what is for lunch today
 ```
-const rivership = request('rivership-functions');
+const rivership = require('rivership-functions');
 rivership.whatIsLunch('Tuesday'); // Returns a promise with a given day's lunch menu (hopefully not fish)
 ```
 # Troubleshooting

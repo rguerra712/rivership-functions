@@ -6,32 +6,26 @@
     exports.getPersonLocation = (name) => {
         return new Promise((resolve, reject) => {
             let tableId = process.env.AIRTABLE_PEOPLE_ID;
+            let getTeam = airtableHelper.getFirstFieldsWhere(
+                tableId,
+                'Teams',
+                'People',
+                name
+            );
             let getPersonName = airtableHelper.getFirstValueWhere(
                 tableId,
                 'People',
-                'name',
+                'Name',
                 name,
                 'Name'
             );
-            let getPersonTeam = airtableHelper.getFirstValueWhere(
-                tableId,
-                'People',
-                'name',
-                name,
-                'Team'
-            );
-            let getTeam = teamId => airtableHelper.getById(
-                tableId,
-                'Teams',
-                teamId,
-                'Location'
-            );
-            getPersonName.then(personName => {
-                    getPersonTeam.then(teamId => {
-                            getTeam(teamId).then(location => {
-                                    resolve(`${personName} is ${location}`)
-                                })
-                                .catch(error => reject(error))
+            getTeam.then(fields => {
+                    getPersonName.then(personName => {
+                            if (fields.Name && fields.Location) {
+                                resolve(`${personName} is on team ${fields.Name} located at ${fields.Location}`)
+                            } else {
+                                reject(`invalid fields ${fields}`);
+                            }
                         })
                         .catch(error => reject(error))
                 })
